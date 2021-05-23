@@ -27,7 +27,7 @@ namespace Ex04.Menus.Test
             //
             // showVersionMenuItem
             //
-            showVersionMenuItem.Text = "Show ShowVersion";
+            showVersionMenuItem.Text = "Show Version";
             showVersionMenuItem.Command = new ShowVersionCommand();
             //
             // countSpacesMenuItem
