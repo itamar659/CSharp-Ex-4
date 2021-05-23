@@ -12,8 +12,6 @@ namespace Ex04.Menus.Delegates
         public MenuItem Parent { get; private set; }
         public string Text { get; set; }
 
-        #region Constructors
-
         public MenuItem()
         {
             m_MenuItems = new List<MenuItem>();
@@ -24,8 +22,6 @@ namespace Ex04.Menus.Delegates
         {
             Text = i_Text;
         }
-
-        #endregion
 
         public void AddMenuItem(MenuItem i_MenuItem)
         {
@@ -76,7 +72,7 @@ namespace Ex04.Menus.Delegates
 
         protected virtual void OnClick()
         {
-            Click?.Invoke(this);
+            Click?.Invoke();
         }
     }
 }

@@ -37,7 +37,9 @@
     <Compile Include="Commands\ShowDateCommand.cs" />
     <Compile Include="Commands\ShowTimeCommand.cs" />
     <Compile Include="Commands\ShowVersionCommand.cs" />
+    <Compile Include="DelegatesProgram.cs" />
     <Compile Include="InterfacesProgram.cs" />
+    <Compile Include="MethodManager.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

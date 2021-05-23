@@ -2,18 +2,18 @@
 {
     class GoToCommand : ICommand
     {
-        public MainMenu MainMenu { get; }
-        public MenuItem MenuItem { get; }
+        private MainMenu m_MainMenu;
+        private MenuItem m_MenuItem;
 
         public GoToCommand(MainMenu i_MainMenu, MenuItem i_ToMenu)
         {
-            MainMenu = i_MainMenu;
-            MenuItem = i_ToMenu;
+            m_MainMenu = i_MainMenu;
+            m_MenuItem = i_ToMenu;
         }
 
         public void Execute()
         {
-            MainMenu.Back(MenuItem);
+            m_MainMenu.ChangeMenu(m_MenuItem);
         }
     }
 }

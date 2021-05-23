@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Ex04.Menus.Interfaces
@@ -28,22 +29,24 @@ namespace Ex04.Menus.Interfaces
 
         public void AddMenuItem(MenuItem i_MenuItem)
         {
+            i_MenuItem.Parent = this;
             m_MenuItems.Add(i_MenuItem);
         }
 
         public void RemoveMenuItem(MenuItem i_MenuItem)
         {
+            i_MenuItem.Parent = null;
             m_MenuItems.Remove(i_MenuItem);
         }
 
         public void Click(int i_Index)
         {
-            m_MenuItems[i_Index].Click();
-        }
+            if(m_MenuItems[i_Index].Command == null)
+            {
+                throw new NullReferenceException("Error: MenuItem does'nt have a command!");
+            }
 
-        public void Click()
-        {
-            Command.Execute();
+            m_MenuItems[i_Index].Command.Execute();
         }
 
         public bool IsValidIndex(int i_Index)

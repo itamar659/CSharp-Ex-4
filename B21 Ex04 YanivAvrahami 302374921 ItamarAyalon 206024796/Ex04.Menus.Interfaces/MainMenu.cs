@@ -49,9 +49,9 @@ namespace Ex04.Menus.Interfaces
             CurrentMenu = i_ToMenu;
         }
 
-        public void Back(MenuItem i_CurrentMenu)
+        public void Back()
         { 
-            CurrentMenu = i_CurrentMenu.Parent;
+            CurrentMenu = CurrentMenu.Parent;
         }
 
         public void Exit()

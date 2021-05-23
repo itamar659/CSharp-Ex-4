@@ -7,6 +7,10 @@ namespace Ex04.Menus.Delegates
         public MenuItem CurrentMenuItem { get; set; }
         public bool IsRunning { get; private set; }
 
+        public MainMenu()
+        {
+        }
+
         public MainMenu(MenuItem i_StartMenu)
         {
             CurrentMenuItem = i_StartMenu;
@@ -14,6 +18,11 @@ namespace Ex04.Menus.Delegates
 
         public void Show()
         {
+            if (CurrentMenuItem == null)
+            {
+                throw new NullReferenceException("Need to set the first menu to display.");
+            }
+
             IsRunning = true;
 
             while (IsRunning)
@@ -40,7 +49,17 @@ namespace Ex04.Menus.Delegates
             Console.WriteLine("Bye Bye");
         }
 
-        public void Stop()
+        public void ChangeMenu(MenuItem i_NextMenu)
+        {
+            CurrentMenuItem = i_NextMenu;
+        }
+
+        public void BackMenu()
+        {
+            CurrentMenuItem = CurrentMenuItem.Parent;
+        }
+
+        public void Exit()
         {
             IsRunning = false;
         }

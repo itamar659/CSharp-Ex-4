@@ -2,18 +2,16 @@
 {
     public class BackCommand : ICommand
     {
-        public MainMenu MainMenu { get; }
-        public MenuItem MenuItem { get; }
+        private MainMenu m_MainMenu; 
 
-        public BackCommand(MainMenu i_MainMenu, MenuItem i_CurrentMenu)
+        public BackCommand(MainMenu i_MainMenu)
         {
-            MainMenu = i_MainMenu;
-            MenuItem = i_CurrentMenu;
+            m_MainMenu = i_MainMenu;
         }
 
         public void Execute()
         {
-            MainMenu.Back(MenuItem);
+            m_MainMenu.Back();
         }
     }
 }

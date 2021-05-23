@@ -2,16 +2,16 @@
 {
     public class ExitCommand : ICommand
     {
-        public MainMenu MainMenu { get; }
+        private MainMenu m_MainMenu;
 
         public ExitCommand(MainMenu i_MainMenu)
         {
-            MainMenu = i_MainMenu;
+            m_MainMenu = i_MainMenu;
         }
 
         public void Execute()
         {
-            MainMenu.Exit();
+            m_MainMenu.Exit();
         }
     }
 }

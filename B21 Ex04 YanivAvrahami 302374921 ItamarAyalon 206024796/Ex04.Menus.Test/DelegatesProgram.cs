@@ -1,26 +1,23 @@
-﻿using System;
-using Ex04.Menus.Interfaces;
-using Ex04.Menus.Interfaces.Commands;
-using Ex04.Menus.Test.Commands;
+﻿using Ex04.Menus.Delegates;
 
 namespace Ex04.Menus.Test
 {
-    public class InterfacesProgram
+    class DelegatesProgram
     {
         private MainMenu m_MainMenu;
 
         public void Run()
         {
-            initializeMainMenu();
+            initializeDelegateMainMenu();
             m_MainMenu.Show();
         }
 
-        void initializeMainMenu()
+        void initializeDelegateMainMenu()
         {
             m_MainMenu = new MainMenu();
-            MenuItem versionAndSpacesMenu = new MenuItem();
-            MenuItem showdateTimeMenu = new MenuItem();
-            MenuItem openingMenu = new MenuItem();
+            SubMenu versionAndSpacesMenu = new SubMenu();
+            SubMenu showdateTimeMenu = new SubMenu();
+            SubMenu openingMenu = new SubMenu();
             MenuItem showVersionMenuItem = new MenuItem();
             MenuItem countSpacesMenuItem = new MenuItem();
             MenuItem showTimeMenuItem = new MenuItem();
@@ -31,37 +28,37 @@ namespace Ex04.Menus.Test
             // showVersionMenuItem
             //
             showVersionMenuItem.Text = "Show ShowVersion";
-            showVersionMenuItem.Command = new ShowVersionCommand();
+            showVersionMenuItem.Click += showVersionMenuItem_Click;
             //
             // countSpacesMenuItem
             //
             countSpacesMenuItem.Text = "Count Spaces";
-            countSpacesMenuItem.Command = new CountSpacesCommand();
+            countSpacesMenuItem.Click += countSpacesMenuItem_Click;
             //
             // showTimeMenuItem
             //
             showTimeMenuItem.Text = "Show Time";
-            showTimeMenuItem.Command = new ShowTimeCommand();
+            showTimeMenuItem.Click += showTimeMenuItem_Click;
             //
             // showDateMenuItem
             //
             showDateMenuItem.Text = "Show Date";
-            showDateMenuItem.Command = new ShowDateCommand();
+            showDateMenuItem.Click += showDate_Click;
             //
             // backMenuItem
             //
             backMenuItem.Text = "Back";
-            backMenuItem.Command = new BackCommand(m_MainMenu);
+            backMenuItem.Click += m_MainMenu.BackMenu;
             //
             // exitMenuItem
             //
             exitMenuItem.Text = "Exit";
-            exitMenuItem.Command = new ExitCommand(m_MainMenu);
+            exitMenuItem.Click += m_MainMenu.Exit;
             //
             // versionAndSpacesMenu
             //
             versionAndSpacesMenu.Text = "ShowVersion And Spaces";
-            versionAndSpacesMenu.Command = new GoToCommand(m_MainMenu, versionAndSpacesMenu);
+            versionAndSpacesMenu.Click += m_MainMenu.ChangeMenu;
             versionAndSpacesMenu.AddMenuItem(backMenuItem);
             versionAndSpacesMenu.AddMenuItem(showVersionMenuItem);
             versionAndSpacesMenu.AddMenuItem(countSpacesMenuItem);
@@ -69,7 +66,7 @@ namespace Ex04.Menus.Test
             // showdateTimeMenu
             //
             showdateTimeMenu.Text = "Show Date Time";
-            showdateTimeMenu.Command = new GoToCommand(m_MainMenu, showdateTimeMenu);
+            showdateTimeMenu.Click += m_MainMenu.ChangeMenu;
             showdateTimeMenu.AddMenuItem(backMenuItem);
             showdateTimeMenu.AddMenuItem(showTimeMenuItem);
             showdateTimeMenu.AddMenuItem(showDateMenuItem);
@@ -82,7 +79,27 @@ namespace Ex04.Menus.Test
             openingMenu.AddMenuItem(showdateTimeMenu);
 
             // Init the first menu to show
-            m_MainMenu.CurrentMenu = openingMenu;
+            m_MainMenu.CurrentMenuItem = openingMenu;
+        }
+
+        private void countSpacesMenuItem_Click()
+        {
+            MethodManager.CountSpaces();
+        }
+
+        private void showVersionMenuItem_Click()
+        {
+            MethodManager.ShowVersion();
+        }
+
+        private void showTimeMenuItem_Click()
+        {
+            MethodManager.ShowTime();
+        }
+
+        private void showDate_Click()
+        {
+            MethodManager.ShowDate();
         }
     }
 }
