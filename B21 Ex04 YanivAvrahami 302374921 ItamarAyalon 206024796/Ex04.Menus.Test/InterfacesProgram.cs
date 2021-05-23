@@ -57,7 +57,7 @@ namespace Ex04.Menus.Test
             //
             // versionAndSpacesMenu
             //
-            versionAndSpacesMenu.Text = "Show Version And Spaces";
+            versionAndSpacesMenu.Text = "Version And Spaces";
             versionAndSpacesMenu.Command = new GoToCommand(m_MainMenu, versionAndSpacesMenu);
             versionAndSpacesMenu.AddMenuItem(backMenuItem);
             versionAndSpacesMenu.AddMenuItem(showVersionMenuItem);
@@ -65,7 +65,7 @@ namespace Ex04.Menus.Test
             //
             // showdateTimeMenu
             //
-            showdateTimeMenu.Text = "Show Date Time";
+            showdateTimeMenu.Text = "Show Date/Time";
             showdateTimeMenu.Command = new GoToCommand(m_MainMenu, showdateTimeMenu);
             showdateTimeMenu.AddMenuItem(backMenuItem);
             showdateTimeMenu.AddMenuItem(showTimeMenuItem);

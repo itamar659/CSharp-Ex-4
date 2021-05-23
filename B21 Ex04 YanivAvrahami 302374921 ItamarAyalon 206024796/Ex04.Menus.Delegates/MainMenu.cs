@@ -4,12 +4,12 @@ namespace Ex04.Menus.Delegates
 {
     public class MainMenu
     {
-        public MenuItem CurrentMenuItem { get; set; }
+        public MenuItem CurrentMenu { get; set; }
         public bool IsRunning { get; private set; }
 
         public void Show()
         {
-            if (CurrentMenuItem == null)
+            if (CurrentMenu == null)
             {
                 throw new NullReferenceException("Need to set the first menu to display.");
             }
@@ -19,22 +19,22 @@ namespace Ex04.Menus.Delegates
             while (IsRunning)
             {
                 Console.Clear();
-                Console.WriteLine(CurrentMenuItem.ToString());
+                Console.WriteLine(CurrentMenu.ToString());
                 Console.Write("Enter an option: ");
 
                 string optionStr = Console.ReadLine();
 
-                if (int.TryParse(optionStr, out int option) && CurrentMenuItem.IsValidIndex(option))
+                if (int.TryParse(optionStr, out int option) && CurrentMenu.IsValidIndex(option))
                 {
-                    CurrentMenuItem.ClickMe(option);
+                    Console.Clear();
+                    CurrentMenu.ClickMe(option);
                 }
                 else
                 {
                     Console.WriteLine("No such an option");
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
                 }
-
-                Console.WriteLine("Press enter to continue...");
-                Console.ReadLine();
             }
 
             Console.WriteLine("Bye Bye");
@@ -42,12 +42,12 @@ namespace Ex04.Menus.Delegates
 
         public void ChangeMenu(MenuItem i_NextMenu)
         {
-            CurrentMenuItem = i_NextMenu;
+            CurrentMenu = i_NextMenu;
         }
 
         public void BackMenu()
         {
-            CurrentMenuItem = CurrentMenuItem.Parent;
+            CurrentMenu = CurrentMenu.Parent;
         }
 
         public void Exit()

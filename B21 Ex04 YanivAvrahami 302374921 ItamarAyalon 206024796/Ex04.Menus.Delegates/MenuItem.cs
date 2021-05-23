@@ -5,6 +5,7 @@ namespace Ex04.Menus.Delegates
 {
     public class MenuItem
     {
+        // public event Action Click
         public event ClickDelegate Click;
 
         private readonly List<MenuItem> m_MenuItems;

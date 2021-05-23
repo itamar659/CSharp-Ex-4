@@ -9,6 +9,11 @@ namespace Ex04.Menus.Interfaces
 
         public void Show()
         {
+            if (CurrentMenu == null)
+            {
+                throw new NullReferenceException("Need to set the first menu to display.");
+            }
+
             IsRunning = true;
 
             while (IsRunning)
@@ -21,15 +26,15 @@ namespace Ex04.Menus.Interfaces
 
                 if (int.TryParse(optionStr, out int option) && CurrentMenu.IsValidIndex(option))
                 {
+                    Console.Clear();
                     CurrentMenu.Click(option);
                 }
                 else
                 {
                     Console.WriteLine("No such an option");
+                    Console.WriteLine("Press enter to continue...");
+                    Console.ReadLine();
                 }
-
-                Console.WriteLine("Press enter to continue...");
-                Console.ReadLine();
             }
 
             Console.WriteLine("Bye Bye");

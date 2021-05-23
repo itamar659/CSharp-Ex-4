@@ -11,27 +11,38 @@ namespace Ex04.Menus.Test
 
             if (!string.IsNullOrEmpty(input))
             {
-                Console.WriteLine(string.Format("Number of spaces: {0}.", input.Split(' ').Length - 1));
+                Console.WriteLine("Number of spaces: {0}.", input.Split(' ').Length - 1);
             }
             else
             {
                 Console.WriteLine("0 spaces. The string is empty.");
             }
+
+            pause();
         }
 
         static public void ShowVersion()
         {
-            Console.WriteLine("Show Version: 21.1.4.8930");
+            Console.WriteLine("Version: 21.1.4.8930");
+            pause();
         }
 
         static public void ShowTime()
         {
-            Console.WriteLine(DateTime.Now.ToString("HH:mm"));
+            Console.WriteLine("The time right now: {0}", DateTime.Now.ToString("HH:mm"));
+            pause();
         }
 
         static public void ShowDate()
         {
-            Console.WriteLine(DateTime.Today.ToString("dd.MM.yyyy"));
+            Console.WriteLine("The date today: {0}", DateTime.Today.ToString("dd.MM.yyyy"));
+            pause();
+        }
+
+        static private void pause()
+        {
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
         }
     }
 }
