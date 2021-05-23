@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Ex04.Menus.Interfaces;
+using Ex04.Menus.Delegates;
+using Ex04.Menus.Interfaces.Commands;
+using Ex04.Menus.Test.Commands;
 
 namespace Ex04.Menus.Test
 {
     class Program
     {
-        static private Delegates.MainMenu m_MainMenu;
+        private static Delegates.MainMenu m_MainMenu;
 
-        static void Main()
+        public static void Main()
         {
-            initializeDelegateMainMenu();
+            //initializeDelegateMainMenu();
 
-            m_MainMenu.Show();
+            InterfacesProgram interfacesProgram = new InterfacesProgram();
+            interfacesProgram.Run();
 
-            // ICommand changeCommand = new ChangeCommand(countSpacesBtn_Click);
+            //m_MainMenu.Show();
         }
 
         static void initializeDelegateMainMenu()
@@ -92,6 +95,8 @@ namespace Ex04.Menus.Test
             m_MainMenu = new Delegates.MainMenu(openingMenu);
         }
 
+        
+
         static private void countSpacesBtn_Click(Delegates.MenuItem i_SenderMenuItem)
         {
             Console.WriteLine("Enter a string to count its spaces: ");
@@ -136,5 +141,8 @@ namespace Ex04.Menus.Test
         {
             m_MainMenu.Stop();
         }
+
+
+        
     }
 }
