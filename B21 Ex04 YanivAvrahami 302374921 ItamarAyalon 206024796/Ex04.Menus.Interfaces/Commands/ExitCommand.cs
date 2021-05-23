@@ -1,4 +1,4 @@
-﻿namespace Ex04.Menus.Interfaces.Commands
+﻿namespace Ex04.Menus.Interfaces
 {
     public class ExitCommand : ICommand
     {
@@ -9,7 +9,7 @@
             m_MainMenu = i_MainMenu;
         }
 
-        public void Execute()
+        void ICommand.Execute()
         {
             m_MainMenu.Exit();
         }

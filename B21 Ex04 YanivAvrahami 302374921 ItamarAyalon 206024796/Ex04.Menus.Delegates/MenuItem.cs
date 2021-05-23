@@ -18,11 +18,6 @@ namespace Ex04.Menus.Delegates
             Text = string.Empty;
         }
 
-        public MenuItem(string i_Text) : this()
-        {
-            Text = i_Text;
-        }
-
         public void AddMenuItem(MenuItem i_MenuItem)
         {
             i_MenuItem.Parent = this;

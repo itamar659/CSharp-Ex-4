@@ -7,15 +7,6 @@ namespace Ex04.Menus.Interfaces
         public MenuItem CurrentMenu { get; set; }
         public bool IsRunning { get; private set; }
 
-        public MainMenu()
-        {
-        }
-
-        public MainMenu(MenuItem i_StartMenu)
-        {
-            CurrentMenu = i_StartMenu;
-        }
-
         public void Show()
         {
             IsRunning = true;

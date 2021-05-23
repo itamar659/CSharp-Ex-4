@@ -1,4 +1,6 @@
-﻿namespace Ex04.Menus.Interfaces.Commands
+﻿using Ex04.Menus.Interfaces;
+
+namespace Ex04.Menus.Test
 {
     class GoToCommand : ICommand
     {
@@ -11,7 +13,7 @@
             m_MenuItem = i_ToMenu;
         }
 
-        public void Execute()
+        void ICommand.Execute()
         {
             m_MainMenu.ChangeMenu(m_MenuItem);
         }

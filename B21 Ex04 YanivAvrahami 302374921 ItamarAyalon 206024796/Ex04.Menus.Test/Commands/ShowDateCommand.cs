@@ -1,10 +1,10 @@
 ﻿using Ex04.Menus.Interfaces;
 
-namespace Ex04.Menus.Test.Commands
+namespace Ex04.Menus.Test
 {
     class ShowDateCommand : ICommand
     {
-        public void Execute()
+        void ICommand.Execute()
         {
             MethodManager.ShowDate();
         }

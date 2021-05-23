@@ -17,16 +17,6 @@ namespace Ex04.Menus.Interfaces
             Text = string.Empty;
         }
 
-        public MenuItem(string i_Text) : this()
-        {
-            Text = i_Text;
-        }
-
-        public MenuItem(string i_Text, ICommand i_Command) : this(i_Text)
-        {
-            Command = i_Command;
-        }
-
         public void AddMenuItem(MenuItem i_MenuItem)
         {
             i_MenuItem.Parent = this;
@@ -43,7 +33,7 @@ namespace Ex04.Menus.Interfaces
         {
             if(m_MenuItems[i_Index].Command == null)
             {
-                throw new NullReferenceException("Error: MenuItem does'nt have a command!");
+                throw new NullReferenceException("Error: MenuItem doesn't have a command!");
             }
 
             m_MenuItems[i_Index].Command.Execute();

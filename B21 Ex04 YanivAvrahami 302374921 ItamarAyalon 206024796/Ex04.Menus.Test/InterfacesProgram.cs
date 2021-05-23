@@ -1,6 +1,4 @@
 ﻿using Ex04.Menus.Interfaces;
-using Ex04.Menus.Interfaces.Commands;
-using Ex04.Menus.Test.Commands;
 
 namespace Ex04.Menus.Test
 {
@@ -14,7 +12,7 @@ namespace Ex04.Menus.Test
             m_MainMenu.Show();
         }
 
-        void initializeMainMenu()
+        private void initializeMainMenu()
         {
             m_MainMenu = new MainMenu();
             MenuItem versionAndSpacesMenu = new MenuItem();
@@ -59,7 +57,7 @@ namespace Ex04.Menus.Test
             //
             // versionAndSpacesMenu
             //
-            versionAndSpacesMenu.Text = "ShowVersion And Spaces";
+            versionAndSpacesMenu.Text = "Show Version And Spaces";
             versionAndSpacesMenu.Command = new GoToCommand(m_MainMenu, versionAndSpacesMenu);
             versionAndSpacesMenu.AddMenuItem(backMenuItem);
             versionAndSpacesMenu.AddMenuItem(showVersionMenuItem);

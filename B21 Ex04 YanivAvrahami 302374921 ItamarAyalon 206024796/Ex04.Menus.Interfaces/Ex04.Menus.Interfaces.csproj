@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="Commands\BackCommand.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Commands\Base\ICommand.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuItem.cs" />
   </ItemGroup>

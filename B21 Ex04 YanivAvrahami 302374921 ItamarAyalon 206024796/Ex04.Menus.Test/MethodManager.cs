@@ -21,7 +21,7 @@ namespace Ex04.Menus.Test
 
         static public void ShowVersion()
         {
-            Console.WriteLine("ShowVersion: 21.1.4.8930");
+            Console.WriteLine("Show Version: 21.1.4.8930");
         }
 
         static public void ShowTime()

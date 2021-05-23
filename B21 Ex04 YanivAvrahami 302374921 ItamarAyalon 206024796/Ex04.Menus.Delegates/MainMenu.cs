@@ -7,15 +7,6 @@ namespace Ex04.Menus.Delegates
         public MenuItem CurrentMenuItem { get; set; }
         public bool IsRunning { get; private set; }
 
-        public MainMenu()
-        {
-        }
-
-        public MainMenu(MenuItem i_StartMenu)
-        {
-            CurrentMenuItem = i_StartMenu;
-        }
-
         public void Show()
         {
             if (CurrentMenuItem == null)

@@ -8,11 +8,11 @@ namespace Ex04.Menus.Test
 
         public void Run()
         {
-            initializeDelegateMainMenu();
+            initializeMainMenu();
             m_MainMenu.Show();
         }
 
-        void initializeDelegateMainMenu()
+        private void initializeMainMenu()
         {
             m_MainMenu = new MainMenu();
             SubMenu versionAndSpacesMenu = new SubMenu();
@@ -43,21 +43,21 @@ namespace Ex04.Menus.Test
             // showDateMenuItem
             //
             showDateMenuItem.Text = "Show Date";
-            showDateMenuItem.Click += showDate_Click;
+            showDateMenuItem.Click += showDateMenuItem_Click;
             //
             // backMenuItem
             //
             backMenuItem.Text = "Back";
-            backMenuItem.Click += m_MainMenu.BackMenu;
+            backMenuItem.Click += backMenuItem_Click;
             //
             // exitMenuItem
             //
             exitMenuItem.Text = "Exit";
-            exitMenuItem.Click += m_MainMenu.Exit;
+            exitMenuItem.Click += exitMenuItem_Click;
             //
             // versionAndSpacesMenu
             //
-            versionAndSpacesMenu.Text = "ShowVersion And Spaces";
+            versionAndSpacesMenu.Text = "Show Version And Spaces";
             versionAndSpacesMenu.Click += m_MainMenu.ChangeMenu;
             versionAndSpacesMenu.AddMenuItem(backMenuItem);
             versionAndSpacesMenu.AddMenuItem(showVersionMenuItem);
@@ -97,9 +97,19 @@ namespace Ex04.Menus.Test
             MethodManager.ShowTime();
         }
 
-        private void showDate_Click()
+        private void showDateMenuItem_Click()
         {
             MethodManager.ShowDate();
+        }
+
+        private void backMenuItem_Click()
+        {
+            m_MainMenu.BackMenu();
+        }
+
+        private void exitMenuItem_Click()
+        {
+            m_MainMenu.Exit();
         }
     }
 }
