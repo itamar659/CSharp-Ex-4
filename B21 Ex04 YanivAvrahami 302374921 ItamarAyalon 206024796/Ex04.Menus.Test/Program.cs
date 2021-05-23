@@ -14,85 +14,81 @@ namespace Ex04.Menus.Test
 
             m_MainMenu.Show();
 
-            // ICommand changeCommand = new ChangeCommand(countSpacesBtn_Click);
+            // ICommand changeCommand = new ChangeCommand(countSpacesMenuItem_Click);
         }
 
         static void initializeDelegateMainMenu()
         {
-            Delegates.MenuItem backFromVersionAndSpacesBtn = new Delegates.MenuItem();
-            Delegates.MenuItem showVersionBtn = new Delegates.MenuItem();
-            Delegates.MenuItem countSpacesBtn = new Delegates.MenuItem();
-            Delegates.MenuItem versionAndSpacesMenu = new Delegates.MenuItem();
-            Delegates.MenuItem backFromShowdateTimeMenuBtn = new Delegates.MenuItem();
-            Delegates.MenuItem showTimeBtn = new Delegates.MenuItem();
-            Delegates.MenuItem showDateBtn = new Delegates.MenuItem();
-            Delegates.MenuItem showdateTimeMenu = new Delegates.MenuItem();
-            Delegates.MenuItem exitBtn = new Delegates.MenuItem();
-            Delegates.MenuItem openingMenu = new Delegates.MenuItem();
+            m_MainMenu = new Delegates.MainMenu();
+            Delegates.SubMenu versionAndSpacesMenu = new Delegates.SubMenu();
+            Delegates.SubMenu showdateTimeMenu = new Delegates.SubMenu();
+            Delegates.SubMenu openingMenu = new Delegates.SubMenu();
+            Delegates.MenuItem showVersionMenuItem = new Delegates.MenuItem();
+            Delegates.MenuItem countSpacesMenuItem = new Delegates.MenuItem();
+            Delegates.MenuItem showTimeMenuItem = new Delegates.MenuItem();
+            Delegates.MenuItem showDateMenuItem = new Delegates.MenuItem();
+            Delegates.MenuItem backMenuItem = new Delegates.MenuItem();
+            Delegates.MenuItem exitMenuItem = new Delegates.MenuItem();
 
             //
-            // backFromVersionAndSpacesBtn
+            // showVersionMenuItem
             //
-            backFromVersionAndSpacesBtn.Text = "Back";
-            backFromVersionAndSpacesBtn.Click += backMenuBtn_Click;
+            showVersionMenuItem.Text = "Show Version";
+            showVersionMenuItem.Click += showVersionMenuItem_Click;
             //
-            // showVersionBtn
+            // countSpacesMenuItem
             //
-            showVersionBtn.Text = "Show Version";
-            showVersionBtn.Click += showVersionBtn_Click;
+            countSpacesMenuItem.Text = "Count Spaces";
+            countSpacesMenuItem.Click += countSpacesMenuItem_Click;
             //
-            // countSpacesBtn
+            // showTimeMenuItem
             //
-            countSpacesBtn.Text = "Count Spaces";
-            countSpacesBtn.Click += countSpacesBtn_Click;
+            showTimeMenuItem.Text = "Show Time";
+            showTimeMenuItem.Click += showTimeMenuItem_Click;
             //
-            // backFromShowdateTimeMenuBtn
+            // showDateMenuItem
             //
-            backFromShowdateTimeMenuBtn.Text = "Back";
-            backFromShowdateTimeMenuBtn.Click += backMenuBtn_Click;
+            showDateMenuItem.Text = "Show Date";
+            showDateMenuItem.Click += showDate_Click;
             //
-            // showTimeBtn
+            // backMenuItem
             //
-            showTimeBtn.Text = "Show Time";
-            showTimeBtn.Click += showTimeBtn_Click;
+            backMenuItem.Text = "Back";
+            backMenuItem.Click += m_MainMenu.BackMenu;
             //
-            // showDateBtn
+            // exitMenuItem
             //
-            showDateBtn.Text = "Show Date";
-            showDateBtn.Click += showDate_Click;
-            //
-            // exitBtn
-            //
-            exitBtn.Text = "Exit";
-            exitBtn.Click += exitBtn_Click;
+            exitMenuItem.Text = "Exit";
+            exitMenuItem.Click += m_MainMenu.Exit;
             //
             // versionAndSpacesMenu
             //
             versionAndSpacesMenu.Text = "Version And Spaces";
-            versionAndSpacesMenu.Click += changeMenu_Click;
-            versionAndSpacesMenu.AddMenuItem(backFromVersionAndSpacesBtn);
-            versionAndSpacesMenu.AddMenuItem(showVersionBtn);
-            versionAndSpacesMenu.AddMenuItem(countSpacesBtn);
+            versionAndSpacesMenu.Click += m_MainMenu.ChangeMenu;
+            versionAndSpacesMenu.AddMenuItem(backMenuItem);
+            versionAndSpacesMenu.AddMenuItem(showVersionMenuItem);
+            versionAndSpacesMenu.AddMenuItem(countSpacesMenuItem);
             //
             // showdateTimeMenu
             //
             showdateTimeMenu.Text = "Show Date Time";
-            showdateTimeMenu.Click += changeMenu_Click;
-            showdateTimeMenu.AddMenuItem(backFromShowdateTimeMenuBtn);
-            showdateTimeMenu.AddMenuItem(showTimeBtn);
-            showdateTimeMenu.AddMenuItem(showDateBtn);
+            showdateTimeMenu.Click += m_MainMenu.ChangeMenu;
+            showdateTimeMenu.AddMenuItem(backMenuItem);
+            showdateTimeMenu.AddMenuItem(showTimeMenuItem);
+            showdateTimeMenu.AddMenuItem(showDateMenuItem);
             //
             // openingMenu
             //
             openingMenu.Text = "Main Menu";
-            openingMenu.AddMenuItem(exitBtn);
+            openingMenu.AddMenuItem(exitMenuItem);
             openingMenu.AddMenuItem(versionAndSpacesMenu);
             openingMenu.AddMenuItem(showdateTimeMenu);
 
-            m_MainMenu = new Delegates.MainMenu(openingMenu);
+            // Init the first menu to show
+            m_MainMenu.CurrentMenuItem = openingMenu;
         }
 
-        static private void countSpacesBtn_Click(Delegates.MenuItem i_SenderMenuItem)
+        static private void countSpacesMenuItem_Click()
         {
             Console.WriteLine("Enter a string to count its spaces: ");
             string input = Console.ReadLine();
@@ -107,34 +103,19 @@ namespace Ex04.Menus.Test
             }
         }
 
-        static private void showVersionBtn_Click(Delegates.MenuItem i_SenderMenuItem)
+        static private void showVersionMenuItem_Click()
         {
             Console.WriteLine("Version: 21.1.4.8930");
         }
 
-        static private void changeMenu_Click(Delegates.MenuItem i_SenderMenuItem)
-        {
-            m_MainMenu.CurrentMenuItem = i_SenderMenuItem;
-        }
-
-        static private void showTimeBtn_Click(Delegates.MenuItem i_SenderMenuItem)
+        static private void showTimeMenuItem_Click()
         {
             Console.WriteLine(DateTime.Now.ToString("HH:mm"));
         }
 
-        static private void showDate_Click(Delegates.MenuItem i_SenderMenuItem)
+        static private void showDate_Click()
         {
             Console.WriteLine(DateTime.Today.ToString("dd.MM.yyyy"));
-        }
-
-        static private void backMenuBtn_Click(Delegates.MenuItem i_SenderMenuItem)
-        {
-            m_MainMenu.CurrentMenuItem = i_SenderMenuItem.Parent.Parent;
-        }
-
-        static private void exitBtn_Click(Delegates.MenuItem i_SenderMenuItem)
-        {
-            m_MainMenu.Stop();
         }
     }
 }
